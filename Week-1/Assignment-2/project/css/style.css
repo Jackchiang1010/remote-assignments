@@ -1,0 +1,64 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+    color: black;
+    margin: 0;
+}
+
+div.Box {
+  margin: 10px;
+	border-radius: 3px;
+  width: 40%;
+  background: grey;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 15px;
+}
+
+h1 {
+  background: lightblue;
+  border: 0;
+  margin-top: 0;
+  padding: 5%;
+}
+
+h1,
+h3,
+a,
+p {
+  color: black;
+  text-align: center;
+}
+
+button {
+  border: none;
+  background: lightblue;
+}
+
+.main {
+  justify-content: center;
+}
+
+.main-nav {
+  background: lightgrey;
+}
+
+.content {
+  height: 350px;
+  width: 90%;
+  margin: auto;
+}
+
+.main-footer {
+  height: 50px;;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
