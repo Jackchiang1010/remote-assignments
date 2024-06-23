@@ -1,5 +1,6 @@
 .main-nav,
 .sub-nav,
+.container,
 footer {
     display: flex;
     flex-direction: row;
