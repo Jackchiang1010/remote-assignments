@@ -1,22 +1,22 @@
 .main-nav,
 .sub-nav,
-.main-footer {
+footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     
     justify-content: space-around;
-  }
+}
   
-  .content {
+.content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     
     justify-content: center;
-  }
+}
   
-  .main-footer {
+footer {
     margin-top: auto;
     align-self: center;
-  }
+}
