@@ -1,0 +1,22 @@
+.main-nav,
+.sub-nav,
+.main-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    justify-content: space-around;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    justify-content: center;
+  }
+  
+  .main-footer {
+    margin-top: auto;
+    align-self: center;
+  }
