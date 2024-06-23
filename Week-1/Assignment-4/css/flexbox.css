@@ -6,18 +6,28 @@ footer {
     flex-direction: row;
     flex-wrap: wrap;
     
-    justify-content: space-around;
-}
-  
-.content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    justify-content: center;
+    justify-content: space-between;
 }
   
 footer {
     margin-top: auto;
     align-self: center;
+}
+
+.eleventh-sec.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+}
+
+.container-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    justify-content: space-between;
+
+    align-items: flex-start;
 }
