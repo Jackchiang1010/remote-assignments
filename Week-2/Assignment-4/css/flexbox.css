@@ -1,0 +1,36 @@
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  justify-content: space-around;
+}
+
+.title {
+  flex-grow: 2;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  justify-content: center;
+}
+
+.main-footer {
+  margin-top: auto;
+  align-self: center;
+}
+
+/* @media screen and (min-width: 1200px) {
+    body {
+      width: 1200px;
+    }
+} */
+
+@media screen and (max-width: 520px) {
+    div.Box {
+      width: 450px;
+    }
+}
