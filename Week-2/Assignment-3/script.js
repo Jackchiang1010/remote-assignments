@@ -32,7 +32,7 @@ function groupByKey(input) {
    const group = input.reduce( ( sum, object ) => {
         
         if( sum[object.key] ) {
-            sum[object.key] + object.value;
+            sum[object.key] += object.value;
         }
         else {
             sum[object.key] = object.value;
