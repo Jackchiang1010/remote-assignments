@@ -4,48 +4,46 @@ function binarySearchPosition(numbers, target) {
     let indexSmall = 0;
     let indexBig = numbers.length -1;
 
-    // for( let i = 0; i <= Math.floor(numbers.length / 2); i++ ) {
-    //     if( numbers[indexCenter] === target ) {
+    if( target <= numbers[indexBig] ) {
+        while( indexSmall <= indexBig ) {
+
+            indexCenter = Math.floor( ( indexSmall + indexBig ) / 2);
+    
+            if( numbers[indexCenter] > target ) {
+    
+                indexBig = indexCenter - 1;
+    
+            } else if( numbers[indexCenter] < target ){
+    
+                indexSmall = indexCenter + 1;
+    
+            } else {
+    
+                //target === indexCenter
+                //but indexCenter is not the first position
+                indexBig = indexCenter - 1;
+                //finally indexBig === indexSmall so break while loop
+    
+            } 
             
-    //         return indexCenter;
+        }
+    
+        return indexCenter;
 
-    //     } else if( numbers[indexCenter] > target ) {
+    } else {
 
-    //         indexBig = indexCenter;
-    //         indexCenter = Math.floor(indexCenter / 2);
-
-    //     } else if( numbers[indexCenter] < target ){
-
-    //         indexSmall = indexCenter;
-    //         indexCenter = Math.floor( ( indexSmall + indexBig ) / 2);
-
-    //     } else {
-
-    //         console.log('error');
-    //         return -1;
-
-    //     }
-    // }
-
-    while( indexSmall <= indexBig ) {
-
-        indexCenter = Math.floor( ( indexSmall + indexBig ) / 2);
-
-        if( numbers[indexCenter] > target ) {
-
-            indexBig = indexCenter - 1;
-
-        } else if( numbers[indexCenter] < target ){
-
-            indexSmall = indexCenter + 1;
-
-        } else if(numbers[indexCenter] === target) {
-
-            return indexCenter;
-
-        } 
+        return -1;
 
     }
+
+    
+
 }
-console.log(binarySearchPosition([1, 2, 5, 6, 7], 1)); // should print 0
-console.log(binarySearchPosition([1, 2, 5, 6, 7], 6)); // should print 3
+
+//console.log(binarySearchPosition([1, 2, 5, 6, 7], 1)); // should print 0
+//console.log(binarySearchPosition([1, 2, 5, 6, 7], 6)); // should print 3
+
+//console.log(binarySearchPosition([1, 2, 5, 6, 7], 5)); // should print 2
+console.log(binarySearchPosition([1, 2, 5, 6, 7, 7, 7], 7)); // should print 4
+console.log(binarySearchPosition([5, 5, 5, 5, 5, 5, 5], 5)); // should print 0 (the first position)
+console.log(binarySearchPosition([1, 2, 5, 6, 7], 8)); // should print -1
