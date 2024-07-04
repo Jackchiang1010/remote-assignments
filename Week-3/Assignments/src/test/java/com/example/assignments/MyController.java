@@ -9,7 +9,7 @@ public class MyController {
 
     //http://localhost:3000/
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String test() {
         System.out.println("Hi!");
         return "Hello, My Server!";
@@ -27,6 +27,7 @@ public class MyController {
     //because I tried change sum's datatype to long , it is work.
 
     @RequestMapping(value ="/data", method = RequestMethod.GET)
+    @ResponseBody
     public String sum(@RequestParam(required = false) Float number) {
         int sum = 0;
 
@@ -49,6 +50,10 @@ public class MyController {
 
         }
     }
+
+    //Assignment3
+
+    //http://localhost:3000/sum.html
 
 
 }
