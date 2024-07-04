@@ -7,10 +7,10 @@ import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-class AssignmentsApplicationTests {
+class AssignmentsApplicationTest {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AssignmentsApplicationTests.class, args);
+		SpringApplication.run(AssignmentsApplicationTest.class, args);
 
 	}
 

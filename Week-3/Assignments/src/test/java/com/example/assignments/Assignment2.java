@@ -3,18 +3,7 @@ package com.example.assignments;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class MyController {
-
-    //Assignment1
-
-    //http://localhost:3000/
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String test() {
-        System.out.println("Hi!");
-        return "Hello, My Server!";
-    }
-
+public class Assignment2 {
     //Assignment2
 
     //http://localhost:3000/data
@@ -50,10 +39,4 @@ public class MyController {
 
         }
     }
-
-    //Assignment3
-
-    //http://localhost:3000/sum.html
-
-
 }
