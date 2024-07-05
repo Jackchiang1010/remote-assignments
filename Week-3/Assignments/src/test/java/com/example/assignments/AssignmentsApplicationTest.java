@@ -14,8 +14,8 @@ class AssignmentsApplicationTest {
 
 	}
 
-	@Bean
-	public WebServerFactoryCustomizer<TomcatServletWebServerFactory> serverCustomizer() {
-		return server -> server.setPort(3000);
-	}
+//	@Bean
+//	public WebServerFactoryCustomizer<TomcatServletWebServerFactory> serverCustomizer() {
+//		return server -> server.setPort(3000);
+//	}
 }
