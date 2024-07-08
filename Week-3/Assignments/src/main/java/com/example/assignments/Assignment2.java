@@ -1,5 +1,6 @@
 package com.example.assignments;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,7 +8,7 @@ public class Assignment2 {
     //Assignment2
 
     //http://localhost:3000/data
-    //http://localhost:3000/data?number=5.5
+    //http://localhost:3000/data?number=xyz
     //http://localhost:3000/data?number=5
     //http://localhost:3000/data?number=100000000
 
@@ -15,27 +16,48 @@ public class Assignment2 {
     //I think sum is out of datatype's range.
     //because I tried change sum's datatype to long , it is work.
 
-    @RequestMapping(value ="/data", method = RequestMethod.GET)
+    @RequestMapping(value ="/data")
     @ResponseBody
-    public String sum(@RequestParam(required = false) Float number) {
+    public String sum(@RequestParam(value = "number", required = false) String strNumber) {
         int sum = 0;
 
-        if( number == null ) {
+        if( strNumber == null  ) {
 
             return "Lack of Parameter";
 
-        } else if( number - Math.floor(number) > 0 ) {
+        }
 
-            return "Wrong Parameter";
+        try {
+            int intNumber = Integer.parseInt(strNumber);
+            System.out.println(intNumber);
+            System.out.println(strNumber);
 
-        } else {
+            if( intNumber > 0 ) {
+                for (int i = 0; i <= intNumber; i++) {
+                    sum += i;
+                }
 
-            for (int i = 0; i <= number; i++) {
-                sum += i;
+                System.out.printf("sum = %s", sum);
+                return String.valueOf(sum);
+
+            } else if( intNumber < 0 ) {
+                for (int i = intNumber; i <= 0; i++) {
+                    sum += i;
+                }
+
+                System.out.printf("sum = %s", sum);
+                return String.valueOf(sum);
+
+            } else {
+
+                return "Lack of Parameter";
+
             }
 
-            System.out.printf("sum = %s", sum);
-            return String.valueOf(sum);
+        } catch(Exception e) {
+
+            System.out.println(e.getMessage());
+            return "Wrong Parameter";
 
         }
     }
