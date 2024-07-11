@@ -7,7 +7,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -30,9 +29,33 @@ public class UserDao {
         List<User> userList = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
 
         if (userList.size() > 0) {
+
             return userList.get(0);
+
         } else {
+
             return null;
+
+        }
+    }
+
+    @ResponseBody
+    public User getUserByPassword(@RequestBody String password) {
+        String sql = "SELECT * From user WHERE password = :userPassword";
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userPassword", password);
+
+        List<User> userList = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
+
+        if (userList.size() > 0) {
+
+            return userList.get(0);
+
+        } else {
+
+            return null;
+
         }
     }
 

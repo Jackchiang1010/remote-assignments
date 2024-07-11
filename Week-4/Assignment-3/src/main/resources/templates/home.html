@@ -6,23 +6,113 @@
 </head>
 <body>
     <main>
-        <form action="/user/signUp" method="post">
+<!--        <form action="/user/signIn" method="post">-->
+
+<!--            <p>sign-in</p>-->
+<!--            <input text="email" name="email">-->
+<!--            <input text="password" name="password">-->
+<!--            <button type="submit">send</button>-->
+
+<!--        </form>-->
+
+        <div>
+            <p>sign-in</p>
+            <input text="email" name="email">
+            <input text="password" name="password">
+            <button type="submit">send</button>
+        </div>
+
+<!--        <form action="/user/signUp" method="post">-->
+
+<!--            <p>sign-up</p>-->
+<!--            <input text="email" name="email">-->
+<!--            <input text="password" name="password">-->
+<!--            <button type="submit">send</button>-->
+
+<!--        </form>-->
+
+        <div>
 
             <p>sign-up</p>
-            <input text="email" class="signUp" name="email">
-            <input text="password" class="signUp" name="password">
+            <input text="email" name="email">
+            <input text="password" name="password">
             <button type="submit">send</button>
 
-        </form>
+        </div>
 
-        <form action="/user/signIn" method="post">
+        <script>
 
-            <p>sign-in</p>
-            <input text="email" class="signIn" name="email">
-            <input text="password" class="signIn" name="password">
-            <button type="submit">send</button>
+            document.getElementsByTagName("button")[0].addEventListener("click", function() {
+                let data = {
+                    email : document.getElementsByTagName("input")[0].value,
+                    password : document.getElementsByTagName("input")[1].value
+                };
 
-        </form>
+                let xhr = new XMLHttpRequest();
+
+                xhr.open('POST', '/user/signIn');
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+
+                        console.log('Success:', JSON.stringify(data));
+                        if(xhr.responseText === "success") {
+
+                            window.location.href = "member";
+
+                        } else {
+
+                            window.location.href = "home";
+
+                        }
+
+                    } else if (xhr.readyState === 4) {
+
+                        console.error('Error:', xhr.statusText);
+
+                    }
+                };
+
+                xhr.send(JSON.stringify(data));
+            })
+
+            document.getElementsByTagName("button")[1].addEventListener("click", function() {
+                let data = {
+                    email : document.getElementsByTagName("input")[2].value,
+                    password : document.getElementsByTagName("input")[3].value
+                };
+
+                let xhr = new XMLHttpRequest();
+
+                xhr.open('POST', '/user/signUp');
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+
+                        console.log('Success:', JSON.stringify(data));
+                        if(xhr.responseText === "success") {
+
+                            window.location.href = "member";
+
+                        } else {
+
+                            window.location.href = "home";
+
+                        }
+
+                    } else if (xhr.readyState === 4) {
+
+                        console.error('Error:', xhr.statusText);
+
+                    }
+                };
+
+                xhr.send(JSON.stringify(data));
+            })
+
+        </script>
     </main>
 </body>
 </html>

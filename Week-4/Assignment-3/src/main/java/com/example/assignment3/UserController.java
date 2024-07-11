@@ -1,10 +1,11 @@
 package com.example.assignment3;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-//http://localhost:3000/index
+//http://localhost:3000/home
 //mysqldump -u root -p assignment > backup.sql
 
 @Controller
@@ -13,60 +14,74 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String goIndex() {
 
         return "home";
 
     }
 
-    @RequestMapping(value = "/user/signUp", method = RequestMethod.POST)
-    public String getUser(@RequestParam String email) {
+    @RequestMapping(value = "/member", method = RequestMethod.GET)
+    public String goMember() {
 
-        User user = userService.getUserByEmail(email);
+        return "member";
+
+    }
+
+    @RequestMapping(value = "/user/signIn", method = RequestMethod.POST)
+    public ResponseEntity<String> getUser(@RequestBody User userRequest) {
 
         try {
 
-            if(user != null) {
+            User userEmail = userService.getUserByEmail(userRequest.getEmail());
+            User userPassword = userService.getUserByPassword(userRequest.getPassword());
 
-                return "member";
+            if(userEmail != null && userPassword != null) {
+
+                System.out.println(userRequest.getEmail());
+                System.out.println(userRequest.getPassword());
+                return ResponseEntity.ok("success");
 
             } else {
 
-                return "home";
+                return ResponseEntity.ok("failure");
 
             }
 
         } catch (Exception e) {
 
             e.printStackTrace();
-            return "home";
+            System.out.println(e);
+            return ResponseEntity.ok("failure");
 
         }
 
     }
 
-    @RequestMapping(value = "/user/signIn", method = RequestMethod.POST)
-    public String createUser(@ModelAttribute User userRequest) {
-
-        User user = userService.getUserByEmail(userRequest.getEmail());
+    @RequestMapping(value = "/user/signUp", method = RequestMethod.POST)
+    public ResponseEntity<String> createUser(@RequestBody User userRequest) {
 
         try {
 
+            User user = userService.getUserByEmail(userRequest.getEmail());
+
             if(user != null) {
 
-                return "home";
+                return ResponseEntity.ok("failure");
 
             } else {
 
-                return "member";
+                userService.createUser(userRequest);
+                System.out.println(userRequest.getEmail());
+                System.out.println(userRequest.getPassword());
+                return ResponseEntity.ok("success");
 
             }
 
         } catch (Exception e) {
 
             e.printStackTrace();
-            return "home";
+            return ResponseEntity.ok("failure");
 
         }
 

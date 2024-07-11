@@ -17,4 +17,8 @@ public class UserService {
         return userDao.getUserByEmail(email);
     }
 
+    public User getUserByPassword(String password) {
+        return userDao.getUserByPassword(password);
+    }
+
 }
