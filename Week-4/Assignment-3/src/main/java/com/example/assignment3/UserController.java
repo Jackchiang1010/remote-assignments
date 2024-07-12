@@ -38,9 +38,7 @@ public class UserController {
             User userEmail = userService.getUserByEmail(userRequest.getEmail());
             User userPassword = userService.getUserByPassword(userRequest.getPassword());
 
-            if(userEmail != null && userPassword != null
-                    && userEmail.toString().equals(userRequest.getEmail())
-                    && userPassword.toString().equals(userRequest.getPassword())) {
+            if(userEmail != null && userPassword != null) {
 
                 System.out.println(userRequest.getEmail());
                 System.out.println(userRequest.getPassword());
@@ -48,6 +46,8 @@ public class UserController {
 
             } else {
 
+                System.out.println(userEmail);
+                System.out.println(userPassword);
                 return ResponseEntity.ok("failure");
 
             }
