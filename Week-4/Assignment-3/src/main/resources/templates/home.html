@@ -97,7 +97,12 @@
 
                             window.location.href = "member";
 
-                        } else {
+                        } else if (xhr.responseText === "empty") {
+
+                            window.location.href = "home";
+                            alert("Content can't be empty");
+
+                        }else {
 
                             window.location.href = "home";
                             alert("Already Exists");

@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
+
 //http://localhost:3000/home
 //mysqldump -u root -p assignment > backup.sql
 
@@ -36,7 +38,9 @@ public class UserController {
             User userEmail = userService.getUserByEmail(userRequest.getEmail());
             User userPassword = userService.getUserByPassword(userRequest.getPassword());
 
-            if(userEmail != null && userPassword != null) {
+            if(userEmail != null && userPassword != null
+                    && userEmail.toString().equals(userRequest.getEmail())
+                    && userPassword.toString().equals(userRequest.getPassword())) {
 
                 System.out.println(userRequest.getEmail());
                 System.out.println(userRequest.getPassword());
@@ -68,6 +72,10 @@ public class UserController {
             if(user != null) {
 
                 return ResponseEntity.ok("failure");
+
+            } else if(userRequest.getEmail().isEmpty() || userRequest.getPassword().isEmpty()){
+
+                return ResponseEntity.ok("empty");
 
             } else {
 
