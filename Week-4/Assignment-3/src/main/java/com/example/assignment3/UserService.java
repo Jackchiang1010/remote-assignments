@@ -21,4 +21,8 @@ public class UserService {
         return userDao.getUserByPassword(password);
     }
 
+    public User getUserByEmailAndPassword(String email, String password) {
+        return userDao.getUserByEmailAndPassword(email, password);
+    }
+
 }

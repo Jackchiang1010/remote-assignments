@@ -60,6 +60,27 @@ public class UserDao {
     }
 
     @ResponseBody
+    public User getUserByEmailAndPassword(@RequestBody String email, @RequestBody String password) {
+        String sql = "SELECT * From user WHERE email = :userEmail AND password = :userPassword";
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("userEmail", email);
+        map.put("userPassword", password);
+
+        List<User> userList = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
+
+        if (userList.size() > 0) {
+
+            return userList.get(0);
+
+        } else {
+
+            return null;
+
+        }
+    }
+
+    @ResponseBody
     public Integer createUser(@RequestBody User user) {
         String sql = "INSERT INTO user(email, password) VALUES (:userEmail, :userPassword)";
 
