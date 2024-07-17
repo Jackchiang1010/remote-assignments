@@ -1,11 +1,11 @@
-package com.example.assignment3;
+package com.example.assignment3.controller;
 
+import com.example.assignment3.service.UserService;
+import com.example.assignment3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
 
 //http://localhost:3000/home
 //mysqldump -u root -p assignment > backup.sql

@@ -1,5 +1,6 @@
 package com.example.assignment3;
 
+import com.example.assignment3.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

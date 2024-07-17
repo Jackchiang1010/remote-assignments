@@ -1,9 +1,11 @@
-package com.example.assignment3;
+package com.example.assignment3.service;
 
+import com.example.assignment3.dao.UserDao;
+import com.example.assignment3.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserService {
 
     @Autowired
